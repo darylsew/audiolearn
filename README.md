@@ -9,4 +9,6 @@ sudo apt-get install python-pyaudio
 sudo pip install wave  
 
 ## Machine learning:
-sudo pip install -U scikit-learn
+sudo pip install numpy  
+sudo pip install scipy
+sudo pip install -U scikit-learn  
