@@ -13,10 +13,14 @@ sudo pip install numpy
 sudo pip install scipy  
 sudo pip install -U scikit-learn  
 
+### Visualization:  
+sudo aptitude install python-qwt5-qt4
+sudo apt-get install python-matplotlib
+
 ## To Do  
 - [x] Record audio  
-- [ ] Playback audio  
-- [ ] Provide elementary audio visualization for clarity (either with playback or during recording) 
+- [x] Playback audio  
+- [x] Provide audio visualization for clarity (either with playback or during recording) 
 - [ ] Select machine learning technique  
 - [ ] Record audio samples
 - [ ] Extract features from audio  
