@@ -1,7 +1,7 @@
 audiolearn
 ==========
 
-A machine learning demo using PyAudio and Scikits.  
+A machine learning demo using PyAudio and Scikits.learn. Code here will be part of a class on machine learning taught at MIT Splash 2013. 
 
 ## Course Description
 Machine learning is a field of computer science that concerns writing programs that can make and improve predictions or behaviors based on some data. The applications of machine learning are very diverse -  they range from self driving cars to spam filters to autocorrect algorithms and much more. Using scikits-learn, an open source machine learning library for Python, we'll cover reinforcement learning (the kind used to create artificial intelligence for games like chess), supervised learning (the kind used in handwriting recognition), and unsupervised learning (the kind eBay uses to group its products). We'll then cover audio analysis through Fourier transforms with numpy, an open source general purpose computational library for Python, and we'll use our newfound audio analysis and machine learning skills to write very basic speech recognition software.
