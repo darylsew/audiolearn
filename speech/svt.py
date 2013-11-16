@@ -70,7 +70,8 @@ class TestAudioFile(object):
  
 class AudioProcessor(object):
     def __init__(self, audio_file, fft_size, channel, window_function=numpy.ones):
-        self.fft_size = fft_size self.window = window_function(self.fft_size)
+        self.fft_size = fft_size 
+        self.window = window_function(self.fft_size)
         self.audio_file = audio_file
         self.frames = audio_file.get_nframes()
         self.samplerate = audio_file.get_samplerate()
