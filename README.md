@@ -19,7 +19,7 @@ sudo pip install scipy
 sudo pip install -U scikit-learn  
 
 ### Visualization:  
-sudo aptitude install python-qwt5-qt4
+sudo aptitude install python-qwt5-qt4  
 sudo apt-get install python-matplotlib
 
 ## To Do  
