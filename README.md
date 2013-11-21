@@ -27,9 +27,9 @@ sudo apt-get install python-matplotlib
 - [x] Playback audio  
 - [x] Provide audio visualization for clarity (either with playback or during recording) 
 - [x] Select machine learning technique  
-- [ ] Record audio samples
-- [ ] Extract features from audio  
-- [ ] Implement machine learning technique  
+- [x] Record audio samples
+- [x] Extract features from audio  
+- [x] Implement machine learning technique  
 - [ ] Select best features
 - [ ] Observe accuracy metrics
 - [ ] Real time
