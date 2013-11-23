@@ -38,6 +38,7 @@ labels = array(labels)
 for train, test in skf:
     clf = svm.SVC()
     clf.fit(unlabeled_points[train], labels[train])
+    
 
     predicted = clf.predict(unlabeled_points[test])
     #print confusion_matrix(labels[test], predicted)
