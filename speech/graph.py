@@ -9,7 +9,7 @@ import random
 import numpy
 
 #The line needed to get data from the first channel.
-centroids, frequencies, volumes = svt.processWav("../sample/ooo.wav", 1)
+centroids, frequencies, volumes = svt.processWav("../pyaudio/ooo.wav", 1)
 """
 #Samples some of the data.
 print centroids[1]
