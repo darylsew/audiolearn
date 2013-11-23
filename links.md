@@ -6,6 +6,7 @@ Links
 [Cat Mouse Reinforcement Learning Demo](http://www.cse.unsw.edu.au/~cs9417ml/RL1/applet.html)  
 [Self Driving Car](http://www.youtube.com/watch?v=cdgQpa1pUUE)  
 [BoxCar2D Reinforcement Learning Demo](http://boxcar2d.com/about.html)  
+[Vowel Classification](http://dsp.stackexchange.com/questions/8069/distinguish-vowels-from-consonants)
 
 ###Further reading/free courses
 Note: I especially recommend the [Udacity AI course](https://www.udacity.com/course/cs271) for a broad introduction to the field. If you are newer to programing you should check out [CS101](https://www.udacity.com/course/cs101).  
