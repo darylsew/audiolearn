@@ -11,6 +11,7 @@ def plotSomething():
     if SR.newAudio==False: 
         return
     xs,ys=SR.fft()
+    print ys
     c.setData(xs,ys)
     uiplot.qwtPlot.replot()
     SR.newAudio=False
