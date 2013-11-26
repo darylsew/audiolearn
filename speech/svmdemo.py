@@ -28,7 +28,7 @@ labels = [ p[2] for p in labeled_points ]
 
 unlabeled_points = [ p[:2] for p in labeled_points ]
 unlabeled_points = array(unlabeled_points)
-labels = array(labels
+labels = array(labels)
 
 clf = svm.SVC()
 clf.fit(unlabeled_points, labels)
