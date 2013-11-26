@@ -1,7 +1,7 @@
 audiolearn
 ==========
 
-A machine learning demo using PyAudio and Scikits.learn. Code here will be part of a class on machine learning taught at MIT Splash 2013. 
+A machine learning demo using PyAudio and Scikits.learn. Code here was part of a class on machine learning taught at [MIT Splash 2013](https://esp.mit.edu/learn/Splash/index.html). 
 
 ## Course Description
 Machine learning is a field of computer science that concerns writing programs that can make and improve predictions or behaviors based on some data. The applications of machine learning are very diverse -  they range from self driving cars to spam filters to autocorrect algorithms and much more. Using scikits-learn, an open source machine learning library for Python, we'll cover reinforcement learning (the kind used to create artificial intelligence for games like chess), supervised learning (the kind used in handwriting recognition), and unsupervised learning (the kind eBay uses to group its products). We'll then cover audio analysis through Fourier transforms with numpy, an open source general purpose computational library for Python, and we'll use our newfound audio analysis and machine learning skills to write very basic speech recognition software.
@@ -15,7 +15,7 @@ to check out what stuff does.
 ### Audio:  
 sudo apt-get install python-pyaudio  
 sudo pip install wave  
-sudo apt-get install python-dev python-setuptools libsndfile-dev libasound2-dev
+sudo apt-get install python-dev python-setuptools libsndfile-dev libasound2-dev  
 sudo easy\_install scikits.audiolab
 
 ### Machine learning/Analysis:
