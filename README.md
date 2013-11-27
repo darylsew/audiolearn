@@ -16,7 +16,7 @@ to check out what stuff does.
     sudo apt-get install python-pyaudio  
     sudo pip install wave  
     sudo apt-get install python-dev python-setuptools libsndfile-dev libasound2-dev  
-    sudo easy\_install scikits.audiolab
+    sudo easy_install scikits.audiolab
 
 ### Machine learning/Analysis:
     sudo pip install numpy  
