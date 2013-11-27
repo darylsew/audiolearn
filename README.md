@@ -13,19 +13,19 @@ to check out what stuff does.
 
 ## Dependencies
 ### Audio:  
-sudo apt-get install python-pyaudio  
-sudo pip install wave  
-sudo apt-get install python-dev python-setuptools libsndfile-dev libasound2-dev  
-sudo easy\_install scikits.audiolab
+    sudo apt-get install python-pyaudio  
+    sudo pip install wave  
+    sudo apt-get install python-dev python-setuptools libsndfile-dev libasound2-dev  
+    sudo easy\_install scikits.audiolab
 
 ### Machine learning/Analysis:
-sudo pip install numpy  
-sudo pip install scipy  
-sudo pip install -U scikit-learn  
+    sudo pip install numpy  
+    sudo pip install scipy  
+    sudo pip install -U scikit-learn  
 
 ### Visualization:  
-sudo aptitude install python-qwt5-qt4  
-sudo apt-get install python-matplotlib
+    sudo aptitude install python-qwt5-qt4  
+    sudo apt-get install python-matplotlib
 
 ##Links
 ###Course Material
