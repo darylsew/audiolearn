@@ -5,13 +5,10 @@ from PyQt4 import QtCore, QtGui
 import PyQt4.Qwt5 as Qwt
 from recorder import *
 
-
-
 def plotSomething():
     if SR.newAudio==False: 
         return
     xs,ys=SR.fft()
-    print ys
     c.setData(xs,ys)
     uiplot.qwtPlot.replot()
     SR.newAudio=False
