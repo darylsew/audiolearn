@@ -2,11 +2,7 @@
 *.swp
 *.swo
 *.pyc
-*.wav
-.*.sw*
-*.png
-*.gif
-*.jpg
-*.JPG
-*.JPEG
-*.PNG
+*.out
+*.toc
+*.log
+*.aux

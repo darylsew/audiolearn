@@ -3,6 +3,7 @@
 \usepackage{fancyhdr}
 \usepackage{multicol}
 \usepackage{listings}
+\usepackage[margin=1in]{geometry}
 \usepackage[colorlinks=true, linkcolor=black, urlcolor=cyan]{hyperref}
 
 \begin{document}
@@ -11,7 +12,7 @@
 \begin{center}
 %\includegraphics[height=3.5cm]{images/Standard_CUAUV.jpg}\\[0.2cm]
 \textsl{\huge MIT Splash}\\[0.5cm]
-{\huge Fall 2013}\\[0.2cm]
+{\huge Fall 2014}\\[0.2cm]
 \rule{\linewidth}{0.5mm}\\[0.2cm]
 {\Huge Machine Learning and Audio Analysis with Python}
 \rule{\linewidth}{0.5mm}\\[0.4cm]
@@ -28,125 +29,49 @@
 \renewcommand{\footrulewidth}{0.4pt}
 %\lhead{\includegraphics[height=8mm]{images/Standard_CUAUV.jpg}}
 \rhead{Machine Learning and Audio Analysis with Python}
-\rfoot{Fall 2013}
+\rfoot{Fall 2014}
 \cfoot{\thepage}
 
 % Table of contents
 \tableofcontents
 \pagebreak
 
-\section{Course Description}
-Machine learning is a field of computer science that concerns writing programs that can make and improve predictions or behaviors based on some data. The applications of machine learning are very diverse - they range from self driving cars to spam filters to autocorrect algorithms and much more. Using scikits-learn, an open source machine learning library for Python, we'll cover reinforcement learning (the kind used to create artificial intelligence for games like chess), supervised learning (the kind used in handwriting recognition), and unsupervised learning (the kind eBay uses to group its products). We'll then cover audio analysis through Fourier transforms with numpy, an open source general purpose computational library for Python, and we'll use our newfound audio analysis and machine learning skills to write very basic speech recognition software.
+\section{Overview}
+
+Machine learning is a field of computer science that concerns writing programs that can make and improve predictions or behaviors based on data inputs. The applications of machine learning are very diverse - they range from self driving cars to spam filters to autocorrect algorithms and much more. Using scikit-learn, an open source machine learning library for Python, we'll cover reinforcement learning (the kind used to create artificial intelligence for games like chess), supervised learning (the kind used in handwriting recognition), and unsupervised learning (the kind eBay uses to group its products). We'll then cover audio analysis through Fourier transforms with numpy, an open source general purpose computational library for Python, and we'll use our newfound audio analysis and machine learning skills to write very basic speech recognition software. Applications of machine learning to the fields of multitouch gesture recognition and computer vision will also be discussed, drawing from my work at Tesla and research on self driving cars and autonomous submarines.
 %\begin{figure}[h!]
 %    \centering
 %%        \includegraphics[scale=0.5]{images/calibration.png}
 %        \caption{\texttt{StereoCalibModule} recognizing a usable frame for calibration}
 %    \end{figure}
 %\\
-\section{Implementation}
-    \subsection{\texttt{vision/modules/}}
-    \texttt{process\_image(Image *img)} \\
-    \texttt{Image *img} is actually a set of two images. The following code splits img into the left and right components:
-    \begin{lstlisting}[language=C++]
-        img->lockImage();
-        Mat left_mat = img->getImage(BGR, 0).clone();
-        Mat right_mat = img->getImage(BGR, 1).clone();
-        img->unlockImage();
-    \end{lstlisting}
-    Checks to see whether \texttt{cv::findChessboardCorners} can find chessboard corners in the images; if they are found in either image, it calls \texttt{cv::draw\-ChessboardCorners} and posts the corners to the GUI. If they are found in both images, it saves the corners to \texttt{imagePoints}. Once \texttt{count} frames have been found, it calls \texttt{calibrate()}, which will use the saved corners to calculate camera parameters. \\
-    \\
-    \texttt{calibrate()} \\
-    Uses \texttt{cv::stereoCalibrate()} to generate intrinsic and extrinsic camera parameters and save them to intrinsics.yml and extrinsics.yml.
-    \subsection{\texttt{vision/modules/stereo/intrinsics.yml}}
-    Stores the intrinsic camera calibration parameters. These do not change with different scenes (depend on the cameras themselves). These are used as inputs to \texttt{cv::stereoRectify} and \texttt{cv::initUndistortRectifyMap()} in \texttt{generateDepthMap()} from \texttt{Stereo\_Vision.cpp}.\\
-    \textbf{M1} - 3x3 left camera matrix \\
-    \textbf{M2} - 3x3 right camera matrix \\
-    \textbf{D1} - 1x5 left camera distortion coefficients \\
-    \textbf{D2} - 1x5 right camera distortion coefficients \\
-    \subsection{\texttt{vision/modules/stereo/extrinsics.yml}}
-    Stores the extrinsic camera calibration parameters. These are used as inputs to \texttt{cv::stereoRectify()} in \texttt{generateDepthMap()} from \texttt{Stereo\_Vision.cpp}. \\
-    \textbf{R} - 3x3 rotation matrix between the coordinate systems of the first and second cameras \\
-    \textbf{T} - 3x1 translation vector between coordinate systems of the first and second cameras \\
-    \textbf{R1} - 3x3 rectification transform (rotation matrix) for the first camera \\
-    \textbf{R2} - 3x3 rectification transform (rotation matrix) for the second camera \\
-    \textbf{P1} - 3x4 projection matrix in the new rectified coordinate systems for the first camera \\
-    \textbf{P2} - 3x4 projection matrix in the new rectified coordinate systems for the second camera \\
-    \textbf{Q} - 4x4 disparity to depth mapping matrix \\
-    \subsection{\texttt{vision/modules/stereo/Stereo\_Vision.cpp}}
-    \texttt{generateDepthMap()} \\
-    Given a left and right image, camera calibration parameters, and vision tuning parameters, calculates a depth map using a semi-global block matching algorithm. The main functions in use here are \texttt{cv::stereoRectify()}, \texttt{cv::initUndistortRectifyMap()}, and \texttt{cv::StereoSGBM::SGBM()}. StereoSGBM must be initialized and given the vision tuning parameters in order to use \texttt{cv::StereoSGBM::SGBM}.
 
-    \subsection{\texttt{vision/modules/stereo/stereo.cpp}}
-    Architectural code to fit \texttt{generateDepthMap()} from \texttt{Stereo\_Vision.cpp} into the module \texttt{StereoModule}. Nothing interesting going on here.
-    \subsection{\texttt{vision/modules/stereo/samplecalib.cpp}}
-    Sample stereo calibration code straight from an OpenCV book that might be helpful while experimenting; note that this file does NOT interact with any other file.
-    \subsection{\texttt{vision/modules/stereo/selectimages.py}}
-    Short script that assists in handpicking images from two video streams for stereo calibration. Uses ffmpeg to sample images from left and right video streams, then facilitates deletion of images not needed once the key (best for calibration) images have been picked.
-    \subsection{\texttt{vision/tests/calib\_stereo}}
-    \label{subsec:calibstereo}
-    If calibrating with images, set the type of the \texttt{capture\_sources} forward camera to \texttt{``ImageDirectory''}, \texttt{directory\_0} to the directory with images for the left camera, and \texttt{directory\_1} to the directory with images for the right camera. For example: 
-    \begin{lstlisting}[language=C++]
-capture_sources: {
-    forward: {
-        n = 2
-        type = "ImageDirectory";
-        directory_0 = "/home/daryl/stereocalib/left";
-        directory_1 = "/home/daryl/stereocalib/right";
-        loop_0 = true;
-        loop_1 = true;
-    };
-};
-\end{lstlisting}
-If calibrating with video, set the type of the \texttt{capture\_sources} forward camera to \texttt{``Video''}, \texttt{video\_0} to the filepath for the left video, and \texttt{video\_1} to the filepath for the right video. For example: 
-\begin{lstlisting}[language=C++]
-capture_sources: {
-    forward: {
-        n = 2
-        type = "Video";
-        video_0 = "/home/daryl/stereocalib/left.avi";
-        video_1 = "/home/daryl/stereocalib/right.avi";
-        shmframelock_forward_0 = true;
-        shmframelock_forward_1 = true;
-        undistort_0 = true;
-        undistort_1 = true;
-    };
-};
-\end{lstlisting}
-\texttt{auv-visiond -g calib\_stereo} will start running stereo calibration. If you are calibrating with video, you will need to change the frame number of the forward camera manually using \texttt{auv-shm-editor} or in a program by importing shm.
+\section{What is Machine Learning?}
+All machine learning algorithms aim to take observations from a system and produce a model of that system. The key words here are 'system' and 'model'. Systems include anything from stock markets to populations of organisms to the environment surrounding a robot, essentially anything imaginable for which you can record observations. Models are a set of mathematical rules that describe a system. 
 
-    \subsection{\texttt{vision/tests/stereo\_test}}
-    Set \texttt{video\_0} to the filepath for the left video, and \texttt{video\_1} to the filepath for the right video. For example: 
-    \begin{lstlisting}[language=C++]
-capture_sources: {
+\section{Unsupervised Learning}
+\subsection{K-means clustering}
+\subsubsection{Theory}
+\subsubsection{Applications}
+1-2 examples w code
 
-    forward: {
-        n = 2
-        type = "Video";
-        video_0 = "/home/daryl/stereologs/left.avi";
-        video_1 = "/home/daryl/stereologs/right.avi";
-        shmframelock_forward_0 = true;
-        shmframelock_forward_1 = true;
-        undistort_0 = true;
-        undistort_1 = true;
-    };
-};
-\end{lstlisting}
-\texttt{auv-visiond -g stereo\_test} will start running the stereo module.
-\section{Usage}
-\subsection{Calibration}
-The first step is to gather images of a chessboard from many different angles; the chessboard must be visible in both the left and right camera in its entirety, and big enough so that the calibration module recognizes the corners. Once this is done, run \texttt{selectimages.py}. Hand pick (preferably) 15+ images that look particularly good for calibration, then enter their numbers (i.e. 024, 080, 130, 320) into the script. Edit \texttt{calib\_stereo} to include the directories of your images, then run \texttt{auv-visiond -g calib\_stereo} to calibrate. If you would like to calibrate with a video, see \hyperref[subsec:calibstereo]{section \ref*{subsec:calibstereo}}. Copy the output yml files into \texttt{vision/modules/stereo} and you've completed calibration
-\subsection{Vision Tuning}
-Try to set the vision parameters to anything that results in a better depth map. The following are the meaningful vision parameters.\\
-\textbf{P1\_scale} - The first parameter that controls disparity smoothness. Larger is smoother. \texttt{P1\_scale} is the penalty on the disparity change by plus or minus 1 between neighbor pixels.  A suggested value is \texttt{8*number\_of\_image\_channels\-*SADWindowSize*SADWindowSize}. \\
-\textbf{P2\_scale} - The second parameter that controls disparity smoothness. Larger is smoother.  \texttt{P2\_scale} is the penalty on the disparity change by more than 1 between neighbor pixels. Note that \texttt{P2\_scale} must be greater than \texttt{P1\_scale}. A suggested value is \texttt{32*number\_of\_image\_channels*SADWindow\-Size*SADWindowSize}. \\
-\textbf{SADWindowSize} - Matched block size. Must be an odd number greater than or equal to 1. Normally should be between 3 and 11. \\
-\textbf{disp12MaxDiff} - Maximum allowed difference in integer pixel units in the left-right disparity check. Set it to a negative value to disable it. \\
-\textbf{fullDP} - Set it to \texttt{true} to run the full-scale two-pass dynamic programming stereo algorithm, which is very memory intensive. \\
-\textbf{minDisparity} - Minimum possible disparity value. Normally zero but rectification algorithms can shift images so this parameter needs to be adjusted accordingly. \\
-\textbf{speckleRange} - Maximum disparity variation within each connected component. If you do speckle filtering, (see below), set it to a positive value. Usually 1 or 2 will be fine - internally this number is multiplied by 16. \\
-\textbf{speckleWindowSize} - Maximum size of smooth disparity regions to consider their noise speckles and invalidate. Set it to 0 to disable speckle filtering, otherwise it should usually be between 50 and 200. \\
-\textbf{uniquenessRatio} - Margin in percentage by which the best (minimum) computed cost function value should ``win'' the second best value in order to consider the found match correct. Normally should be between 5 and 15.
-\section{Future Improvements}
-With more planning, it might be a more informative course if we wrote everything from scratch rather than used libraries
+\section{Semi-supervised Learning}
+
+\section{Supervised Learning}
+\subsection{Regression}
+Regression is useful for creating a continuous model of a system based on inputs and outputs.
+\subsubsection{Theory}
+The derivation for linear regression is actually fairly straightforward.
+
+\subsection{Support Vector Machines}
+\subsubsection{Theory}
+\subsubsection{Applications}
+
+\section{Reinforcement Learning}
+box2d.js
+\subsection{Theory}
+\subsubsection{Applications}
+
+\section{What is Audio?}
 
 \end{document}
