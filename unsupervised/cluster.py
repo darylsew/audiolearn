@@ -17,6 +17,7 @@ ms = MeanShift(bandwidth=bandwidth, bin_seeding=True)
 ms.fit(X)
 labels = ms.labels_
 cluster_centers = ms.cluster_centers_
+#for each x[i], we have a label label[i]
 
 labels_unique = np.unique(labels)
 n_clusters_ = len(labels_unique)
