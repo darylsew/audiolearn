@@ -59,29 +59,35 @@ Reinforcement learning is used to find the optimal set of actions to take in a d
 \section{Unsupervised Learning}
 \subsection{K-means clustering}
 \subsubsection{Theory}
-The algorithm behind K-means clustering is actually somewhat straightforward.
 1. Gather a set of points in n dimensions.
-2. Select k points at random from 
+2. Select k points at random from this data set; these will be the 'k means' (or centroids).
+3. Assign all points to the 'cluster' containing the nearest centroid.
+4. Update the centroids of the clusters to reflect the new point memberships.
+5. Repeat 3-4 until an update results in no change (this is referred to as convergence, a la sequences and series).
 \subsubsection{Applications}
 One particularly important application of unsupervised learning is constructing gene families. DNA is central to our existence; it contains all the information our cells (and ourselves) require to replicate. This information is stored physically in the famous double helix (usually wound up into histones) and can be extracted and represented holistically with strings (\verb|``ATGTCTATGAACCATC''|).
 
-1-2 examples w code
-
-Another example 
-
+Another example relates to some research I've been doing with self driving cars. To give you a little background, let's watch a short video\ldots. 
+-spiel on sensors in the car \\
+-spiel on sensor fusion \\
+-spiel on localization \\
+-spiel on calibration procedure, applying ransac \\
 \section{Supervised Learning}
 \subsection{Regression}
 Regression is useful for creating a continuous model of a system based on inputs and outputs.
 \subsubsection{Theory}
-The derivation for linear regression is actually fairly straightforward.
+The derivation for linear regression is a minimization of the squared error term between the output function and the input dataset.
 \subsubsection{Applications}
-
+I'm just bringing this up since 
 \subsection{Support Vector Machines}
+SVMs are useful for creating a discrete model of a system based on inputs and outputs.
 \subsubsection{Theory}
+It's all about finding the best set of dividing hyperplanes for our data\ldots
 \subsubsection{Applications}
--tesla spiel
--gesture recognition
--audio recognition (save for later)
+SVMs are probably my favorite classifier.
+-tesla spiel \\
+-gesture recognition \\
+-audio recognition (save for later) \\
 
 \section{Reinforcement Learning}
 \subsection{Theory}
